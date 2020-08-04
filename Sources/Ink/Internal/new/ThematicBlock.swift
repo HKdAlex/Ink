@@ -36,7 +36,7 @@ internal struct ThematicBlock: Fragment {
 
     func html(usingURLs urls: NamedURLCollection,
               modifiers: ModifierCollection) -> String {
-        let typeClass = type.isEmpty ? "" : " class=\"type-\(type)\""
+      let typeClass = type.isEmpty ? "" : " class=\"thematic-break-type-\(type.lowercased())\""
         return "<pre><code\(typeClass)>\(code)</code></pre>"
     }
 
