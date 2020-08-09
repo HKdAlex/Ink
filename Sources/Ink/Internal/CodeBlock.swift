@@ -50,7 +50,13 @@ internal struct CodeBlock: Fragment {
     func html(usingURLs urls: NamedURLCollection,
               modifiers: ModifierCollection) -> String {
         let languageClass = language.isEmpty ? "" : " class=\"language-\(language)\""
-        return "<pre><code\(languageClass)>\(code.html(usingURLs: urls, modifiers: modifiers))</code></pre>"
+        
+        let parser = MarkdownParser()
+        let result = parser.parse(code)
+
+        let html = result.html
+        
+        return "<pre><code\(languageClass)>\(html)</code></pre>"
     }
 
     func plainText() -> String {
